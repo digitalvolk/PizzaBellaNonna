@@ -19,9 +19,26 @@
 
     <h2>Ihre Bestellung</h2>
 <?php
-    echo "Pizza: " . $_GET["name"];
-    echo "<br>";
-    echo "Preis: " . number_format($_GET["cost"], 2, ",", ".") . " €";
+    // DBMS information
+    $dbHost = "daemon";
+    $dbName = "bellanonna";
+    $dbUser = "q2user";
+    $dbPassword = "secretdb";
+
+    // establish DB connection using PDO
+    $pdo = new PDO("mysql:host=" . $dbHost . ";dbname=" . $dbName, $dbUser, $dbPassword);
+
+    $sqlQuery = "SELECT name, cost FROM pizzas WHERE id = " . $_GET["id"] . ";";
+    $result = $pdo->query($sqlQuery);
+
+    if ($result) {
+        $row = $result->fetch();
+        echo "Name: " . $row["name"];
+        echo "<br>";
+        echo "Preis: " . number_format($row["cost"], 2, ",", ".") . " €";
+    }
+
+
     echo "<br><br>";
     echo "<button>Kostenpflichtig bestellen</button>";
 ?>
