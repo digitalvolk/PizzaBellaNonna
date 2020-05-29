@@ -56,7 +56,7 @@
             echo "<td>" . $row["name"] . "</td>";
             echo "<td>" . $row["ingredients"] . "</td>";
             echo "<td>" . number_format($row["cost"], 2, ",", ".") . " €</td>";
-            echo "<td><a href=\"order.php?name=" . $row["name"] . "&cost=" . $row["cost"] . "\">Bestellen</a></td>";
+            echo "<td><a href=\"order.php?id=" . $row["id"] . "\">Bestellen</a></td>";
             echo "</tr>";
         }
     }
