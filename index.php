@@ -27,6 +27,14 @@
 
     <h2>Speisekarte</h2>
 
+    <form action="" method="get">
+        Suche:
+        <input type="text" name="search">
+        <input type="submit" value="OK">
+    </form>
+
+    <br><br>
+
     <table>
         <tr>
             <th>Produkt</th>
@@ -45,8 +53,13 @@
     // establish DB connection using PDO
     $pdo = new PDO("mysql:host=" . $dbHost . ";dbname=" . $dbName, $dbUser, $dbPassword);
 
-    $sqlQuery = "SELECT * FROM pizzas;";
-    $result = $pdo->query($sqlQuery);
+    if (isset($_GET["search"])) {
+        $sqlQuery = "SELECT * FROM pizzas WHERE name LIKE \"%" . $_GET["search"] . "%\";";
+        $result = $pdo->query($sqlQuery);
+    } else {
+        $sqlQuery = "SELECT * FROM pizzas;";
+        $result = $pdo->query($sqlQuery);
+    }
 
     if ($result) {
         // generate a table row for each pizza form the result set
