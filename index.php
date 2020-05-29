@@ -54,8 +54,10 @@
     $pdo = new PDO("mysql:host=" . $dbHost . ";dbname=" . $dbName, $dbUser, $dbPassword);
 
     if (isset($_GET["search"])) {
-        $sqlQuery = "SELECT * FROM pizzas WHERE name LIKE \"%" . $_GET["search"] . "%\";";
-        $result = $pdo->query($sqlQuery);
+        $preparedStatement = $pdo->prepare("SELECT * FROM pizzas WHERE name LIKE :search;");
+        $preparedStatement->execute(array(":search" => "%" . $_GET["search"] . "%"));
+
+        $result = $preparedStatement->fetchAll();
     } else {
         $sqlQuery = "SELECT * FROM pizzas;";
         $result = $pdo->query($sqlQuery);
