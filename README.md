@@ -4,7 +4,7 @@ Eine Demo-Webanwendung mit PHP und Datenbank via PDO. Es handelt sich um die Bes
 
 Über die Releases hinweg wird die Webanwendung iterativ entwickelt und es werden auch auch Themen wie Query String Injection sowie SQL Injections behandelt. Den Abschluss bildet die Umstellung auf ORM mittels Doctrine.
 
-Eine begleitende Videoreihe ist auf [Youtube](https://www.youtube.com/channel/UCW2TwOmSh0ZU85395uT2cQA) verfügbar.
+Eine begleitende Videoreihe ist auf [Youtube](https://www.youtube.com/playlist?list=PLasorM3KVewQKtQuIl3pMKAfn-tnnNU3K) verfügbar.
 
 ### Umgebung
 
